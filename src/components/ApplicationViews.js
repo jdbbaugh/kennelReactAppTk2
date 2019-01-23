@@ -55,16 +55,4 @@ export default class ApplicationViews extends Component {
             </React.Fragment>
         )
     }
-    deleteAnimal = id => {
-        return fetch(`http://localhost:5002/animals/${id}`, {
-            method: "DELETE"
-        })
-        .then(e => e.json())
-        .then(() => fetch(`http://localhost:5002/animals`))
-        .then(e => e.json())
-        .then(animals => this.setState({
-            animals: animals
-        })
-      )
-    }
 }
