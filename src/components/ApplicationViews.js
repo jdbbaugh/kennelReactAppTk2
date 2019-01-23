@@ -2,6 +2,7 @@ import { Route } from 'react-router-dom'
 import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
+import OwnerList from './owner/OwnerList'
 import EmployeeList from './employee/EmployeeList'
 
 
@@ -19,18 +20,25 @@ class ApplicationViews extends Component {
     ]
 
     animalsFromAPI = [
-        { id: 1, name: "Doodles" },
-        { id: 2, name: "Jack" },
-        { id: 3, name: "Angus" },
-        { id: 4, name: "Henley" },
-        { id: 5, name: "Derkins" },
-        { id: 6, name: "Checkers" }
+        {id: 1, name:"Grey", type: "cat"},
+        {id: 2, name:"Blaze", type: "dog"},
+        {id: 3, name:"Jeff", type: "giraffe"},
+        {id: 4, name:"Jim", type: "rinosaurus"},
+        {id: 5, name:"Hip", type: "hip-hop-opottomus"}
+    ]
+
+    ownersFromAPI = [
+        { id: 1, name: "Ryan Tanay", phoneNumber: "(321)342-5903"},
+        { id: 2, name: "Emma Beaton", phoneNumber: "(555)555-5555" },
+        { id: 3, name: "Dani Adkins", phoneNumber: "(324)049-4039" },
+        { id: 4, name: "Adam Oswalt", phoneNumber: "(456)098-0890" }
     ]
 
     state = {
         employees: this.employeesFromAPI,
         locations: this.locationsFromAPI,
-        animals: this.animalsFromAPI
+        animals: this.animalsFromAPI,
+        owners: this.ownersFromAPI
     }
 
     render() {
@@ -41,6 +49,9 @@ class ApplicationViews extends Component {
                 }} />
                 <Route path="/animals" render={(props) => {
                     return <AnimalList animals={this.state.animals} />
+                }} />
+                <Route path="/owners" render={(props) => {
+                    return <OwnerList owners={this.state.owners} />
                 }} />
                 <Route path="/employees" render={(props) => {
                     return <EmployeeList employees={this.state.employees} />
