@@ -3,7 +3,20 @@ import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
-class NavBar extends Component {
+export default class NavBar extends Component {
+    constructor() {
+        super()
+        this.state = {
+            search: "search"
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+        console.log(event.target.value)
+        const {name, value} = event.target
+        this.setState({[name]: value})
+    }
     render() {
         return (
             <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow">
@@ -20,10 +33,12 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/employees">Employees</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/searchbar"><input name="search" type="text" placeholder="Search" onChange={this.handleChange}/></Link>
+                    </li>
                 </ul>
             </nav>
         )
     }
 }
 
-export default NavBar

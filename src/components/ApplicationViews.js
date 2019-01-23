@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
+import SearchBar from './search/SearchBar'
 import OwnerList from './owner/OwnerList';
 
 
@@ -47,6 +48,9 @@ export default class ApplicationViews extends Component {
                 }} />
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList employees={this.state.employees} />
+                }} />
+                <Route exact path="/search" render={(props) => {
+                    return <SearchBar />
                 }} />
             </React.Fragment>
         )
