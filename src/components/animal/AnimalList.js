@@ -11,20 +11,20 @@ export default class AnimalList extends Component {
           const ownerIs = {
             owner: owner.name,
             ownerId: owner.id,
-            pet: animal.name
+            pet: animal.name,
+            petType: animal.type
           }
           ownerToPet.push(ownerIs)
         }
       })
     })
-    console.log(ownerToPet)
 
     return(
       <div className="animals">
         {ownerToPet.map(ownerAndPet =>
           <section key={ownerAndPet.ownerId}>
             <h3>Owner-{ownerAndPet.owner}</h3>
-            <p>Pet-{ownerAndPet.pet}</p>
+            <p>Pet-{ownerAndPet.pet} the {ownerAndPet.petType}</p>
           </section>
         )}
       </div>
