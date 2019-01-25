@@ -10,6 +10,7 @@ import EmployeeManager from "../modules/EmployeeManager"
 import OwnerManager from "../modules/OwnerManager"
 import AnimalDetail from './animal/AnimalDetail'
 import EmployeeDetail from './employee/EmployeeDetail'
+import OwnerDetail from './owner/OwnerDetail'
 
 
 export default class ApplicationViews extends Component {
@@ -99,6 +100,9 @@ deleteEmployee = id => {
                 }} />
                 <Route exact path="/owners" render={(props) => {
                     return <OwnerList deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                }} />
+                <Route path="/owners/:ownerId(\d+)" render={(props) => {
+                    return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList  employees={this.state.employees} />
