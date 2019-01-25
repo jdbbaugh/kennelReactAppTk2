@@ -14,6 +14,7 @@ import OwnerDetail from './owner/OwnerDetail'
 import LocationDetail from './location/LocationDetail'
 import AnimalForm from './animal/AnimalForm'
 import EmployeeForm from './employee/EmployeeForm'
+import OwnerForm from './owner/OwnerForm'
 
 
 export default class ApplicationViews extends Component {
@@ -100,6 +101,12 @@ addEmployee = (employee) => EmployeeManager.post(employee)
         employees: employees
     })
     )
+addOwner = (owner) => OwnerManager.post(owner)
+    .then(() => OwnerManager.getAll())
+    .then(owners => this.setState({
+        owners: owners
+    })
+    )
 
 
     render() {
@@ -125,10 +132,16 @@ addEmployee = (employee) => EmployeeManager.post(employee)
                     employees={this.state.employees} />
                 }} />
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnerList deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                    return <OwnerList {...props}
+                    deleteOwner={this.deleteOwner}
+                    owners={this.state.owners} />
                 }} />
                 <Route path="/owners/:ownerId(\d+)" render={(props) => {
                     return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
+                }} />
+                <Route path="/owners/new" render={(props) => {
+                    return <OwnerForm {...props}
+                    addOwner={this.addOwner} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
                     return <EmployeeList {...props}
