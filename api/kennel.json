@@ -1,26 +1,69 @@
-
 {
   "employees": [
-    { "id": 1, "name": "Jessica Younker" },
-    { "id": 2, "name": "Jordan Nelson" },
-    { "id": 3, "name": "Zoe LeBlanc" },
-    { "id": 4, "name": "Blaise Roberts" }
+    {
+      "id": 1,
+      "name": "Jessica Younker"
+    },
+    {
+      "id": 2,
+      "name": "Jordan Nelson"
+    },
+    {
+      "id": 3,
+      "name": "Zoe LeBlanc"
+    }
   ],
   "locations": [
-    { "id": 1, "name": "Nashville North", "address": "500 Circle Way" },
-    { "id": 2, "name": "Nashville South", "address": "10101 Binary Court" },
-    { "id": 3, "name": "Nashville East", "address": "324 Est Court" }
+    {
+      "id": 1,
+      "name": "Nashville North",
+      "address": "500 Circle Way"
+    },
+    {
+      "id": 2,
+      "name": "Nashville South",
+      "address": "10101 Binary Court"
+    },
+    {
+      "id": 3,
+      "name": "Nashville East",
+      "address": "324 Est Court"
+    }
   ],
   "animals": [
-    {"id": 1, "name": "Sparky", "type": "Dog" },
-    {"id": 2, "name": "Grey", "type": "Cat" },
-    {"id": 3, "name": "Liz", "type": "Lizard" },
-    {"id": 4, "name": "Jim", "type": "Giraffe" }
+    {
+      "id": 1,
+      "name": "Sparky",
+      "type": "Dog"
+    },
+    {
+      "id": 2,
+      "name": "Grey",
+      "type": "Cat"
+    },
+    {
+      "id": 3,
+      "name": "Liz",
+      "type": "Lizard"
+    },
+    {
+      "id": 4,
+      "name": "Jim",
+      "type": "Giraffe"
+    }
   ],
   "owners": [
-    { "id": 1, "name": "Ryan Tanay" },
-    { "id": 2, "name": "Emma Beaton" },
-    { "id": 3, "name": "Dani Adkins" },
-    { "id": 4, "name": "Adam Oswalt" }
+    {
+      "id": 1,
+      "name": "Ryan Tanay"
+    },
+    {
+      "id": 2,
+      "name": "Emma Beaton"
+    },
+    {
+      "id": 3,
+      "name": "Dani Adkins"
+    }
   ]
 }
