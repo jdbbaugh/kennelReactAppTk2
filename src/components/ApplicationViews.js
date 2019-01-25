@@ -13,6 +13,7 @@ import EmployeeDetail from './employee/EmployeeDetail'
 import OwnerDetail from './owner/OwnerDetail'
 import LocationDetail from './location/LocationDetail'
 import AnimalForm from './animal/AnimalForm'
+import EmployeeForm from './employee/EmployeeForm'
 
 
 export default class ApplicationViews extends Component {
@@ -93,6 +94,12 @@ addAnimal = (animal) => AnimalManager.post(animal)
         animals: animals
     })
     )
+addEmployee = (employee) => EmployeeManager.post(employee)
+    .then(() => EmployeeManager.getAll())
+    .then(employees => this.setState({
+        employees: employees
+    })
+    )
 
 
     render() {
@@ -124,10 +131,16 @@ addAnimal = (animal) => AnimalManager.post(animal)
                     return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
                 }} />
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList  employees={this.state.employees} />
+                    return <EmployeeList {...props}
+                    deleteEmployee={this.deleteEmployee}
+                    employees={this.state.employees} />
                 }} />
                 <Route path="/employees/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
+                }} />
+                <Route path="/employees/new" render={(props) => {
+                    return <EmployeeForm {...props}
+                    addEmployee={this.addEmployee} />
                 }} />
 
             </React.Fragment>
