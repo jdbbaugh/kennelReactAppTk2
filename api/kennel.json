@@ -9,8 +9,12 @@
       "name": "Jordan Nelson"
     },
     {
-      "id": 3,
-      "name": "Zoe LeBlanc"
+      "name": "Julia Gulia",
+      "id": 5
+    },
+    {
+      "name": "Jimbo Gimbo",
+      "id": 6
     }
   ],
   "locations": [
@@ -50,6 +54,12 @@
       "id": 4,
       "name": "Liz",
       "breed": "Lizard"
+    },
+    {
+      "name": "Killer",
+      "breed": "Poodle",
+      "employeeId": 2,
+      "id": 5
     }
   ],
   "owners": [
