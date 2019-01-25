@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from "react-router-dom"
 import React, { Component } from "react"
 import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
@@ -15,9 +15,12 @@ import LocationDetail from './location/LocationDetail'
 import AnimalForm from './animal/AnimalForm'
 import EmployeeForm from './employee/EmployeeForm'
 import OwnerForm from './owner/OwnerForm'
+import Login from './authentication/Login'
 
 
 export default class ApplicationViews extends Component {
+    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
+
     state = {
         animals: [],
         employees: [],
@@ -111,17 +114,26 @@ addOwner = (owner) => OwnerManager.post(owner)
 
     render() {
         return (
-            <React.Fragment>
-                <Route exact path="/" render={(props) => {
+            <>
+                <Route path="/login" component={Login} />
+                <Route exact path="/" render={props => {
+                    if (this.isAuthenticated()) {
                     return <LocationList locations={this.state.locations} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route path="/:locationId(\d+)" render={(props) => {
                     return <LocationDetail {...props} locations={this.state.locations} />
                 }} />
-                <Route exact path="/animals" render={(props) => {
+                <Route exact path="/animals" render={props => {
+                    if (this.isAuthenticated()) {
                     return <AnimalList {...props}
                     deleteAnimal={this.deleteAnimal}
                     animals={this.state.animals} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route path="/animals/:animalId(\d+)" render={(props) => {
                     return <AnimalDetail {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
@@ -131,10 +143,14 @@ addOwner = (owner) => OwnerManager.post(owner)
                     addAnimal={this.addAnimal}
                     employees={this.state.employees} />
                 }} />
-                <Route exact path="/owners" render={(props) => {
+                <Route exact path="/owners" render={props => {
+                    if (this.isAuthenticated()) {
                     return <OwnerList {...props}
                     deleteOwner={this.deleteOwner}
                     owners={this.state.owners} />
+                    } else {
+                    return <Redirect to="/login" />
+                    }
                 }} />
                 <Route path="/owners/:ownerId(\d+)" render={(props) => {
                     return <OwnerDetail {...props} deleteOwner={this.deleteOwner} owners={this.state.owners} />
@@ -143,10 +159,14 @@ addOwner = (owner) => OwnerManager.post(owner)
                     return <OwnerForm {...props}
                     addOwner={this.addOwner} />
                 }} />
-                <Route exact path="/employees" render={(props) => {
+                <Route exact path="/employees" render={props => {
+                    if (this.isAuthenticated()) {
                     return <EmployeeList {...props}
                     deleteEmployee={this.deleteEmployee}
                     employees={this.state.employees} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
                 }} />
                 <Route path="/employees/:employeeId(\d+)" render={(props) => {
                     return <EmployeeDetail {...props} deleteEmployee={this.deleteEmployee} employees={this.state.employees} />
@@ -156,7 +176,7 @@ addOwner = (owner) => OwnerManager.post(owner)
                     addEmployee={this.addEmployee} />
                 }} />
 
-            </React.Fragment>
+            </>
         )
     }
 }
