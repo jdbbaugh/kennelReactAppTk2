@@ -34,22 +34,22 @@
     {
       "id": 1,
       "name": "Sparky",
-      "type": "Dog"
+      "breed": "Dog"
     },
     {
       "id": 2,
       "name": "Grey",
-      "type": "Cat"
+      "breed": "Cat"
     },
     {
       "id": 3,
-      "name": "Liz",
-      "type": "Lizard"
+      "name": "Jim",
+      "breed": "Giraffe"
     },
     {
       "id": 4,
-      "name": "Jim",
-      "type": "Giraffe"
+      "name": "Liz",
+      "breed": "Lizard"
     }
   ],
   "owners": [
