@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import dude from "./employee.png"
+import "./Employee.css"
 
 
 export default class EmployeeList extends Component {
@@ -7,8 +9,16 @@ export default class EmployeeList extends Component {
             <section className="employees">
             {
                 this.props.employees.map(employee =>
-                    <div key={employee.id}>
-                        {employee.name}
+                    <div key={employee.id} className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">
+                                <img src={dude} alt="employee-img" className="icon--employee" />
+                                {employee.name}
+                                <a href="#"
+                                onClick={() => this.props.deleteEmployee(employee.id)}
+                                className="card-link">FIRED!</a>
+                            </h5>
+                        </div>
                     </div>
                 )
             }
